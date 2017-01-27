@@ -1,0 +1,14 @@
+{
+  "name": "@scola/d3-control",
+  "version": "0.0.0",
+  "description": "Controls",
+  "repository": "github:scola84/node-d3-control",
+  "author": "M.C. van den Boogaart <scola@kvdb.name>",
+  "license": "MIT",
+  "main": "./dist/d3-control.js",
+  "jsnext:main": "index.js",
+  "dependencies": {
+    "d3-selection": "^1.0.2",
+    "d3-selection-multi": "^1.0.0"
+  }
+}
