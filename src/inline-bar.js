@@ -13,6 +13,7 @@ export default class InlineBar extends GroupBar {
         'color': '#007AFF',
         'display': 'flex',
         'height': '2em',
+        'margin': '0.5em 0',
         'overflow': 'hidden'
       });
   }
