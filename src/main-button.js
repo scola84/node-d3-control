@@ -11,6 +11,7 @@ export default class ControlButton extends AbstractButton {
       .classed('main', true)
       .styles({
         'display': 'flex',
+        'height': '3em',
         'overflow': 'hidden'
       });
 

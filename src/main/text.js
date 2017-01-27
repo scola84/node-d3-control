@@ -10,7 +10,6 @@ export default class Text extends AbstractText {
     });
 
     this._text.styles({
-      'height': '2em',
       'overflow': 'hidden',
       'padding-left': 'inherit',
       'padding-right': 'inherit',
