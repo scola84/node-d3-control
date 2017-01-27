@@ -36,7 +36,6 @@ export default class MainBar extends AbstractBar {
     }
 
     if (action === true) {
-      // element.center();
       this._center.node()
         .appendChild(element.root().node());
     } else if (action === false) {
@@ -56,7 +55,6 @@ export default class MainBar extends AbstractBar {
     }
 
     if (action === true) {
-      element.left();
       this._left.node()
         .appendChild(element.root().node());
     } else if (action === false) {
@@ -76,7 +74,6 @@ export default class MainBar extends AbstractBar {
     }
 
     if (action === true) {
-      element.right();
       this._right.node()
         .appendChild(element.root().node());
     } else if (action === false) {
