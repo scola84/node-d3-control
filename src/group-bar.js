@@ -23,7 +23,7 @@ export default class GroupBar extends AbstractBar {
       this._root.node().appendChild(value.root().node());
     } else if (action === false) {
       this._buttons.delete(value);
-      value.destroy();
+      value.root().remove();
     }
   }
 }
