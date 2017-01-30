@@ -14,8 +14,7 @@ export default class InlineButton extends GroupButton {
       .styles({
         'border-color': 'inherit',
         'color': 'inherit',
-        'display': 'flex',
-        'flex': 1
+        'flex-grow': 1
       });
 
     this._border = this._root

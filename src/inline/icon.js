@@ -6,12 +6,13 @@ export default class Icon extends AbstractIcon {
     super();
 
     this._root.styles({
-      'flex': 1
+      'flex-grow': 1
     });
 
     this._icon.styles({
-      'flex': 1,
-      'padding': '0 0.5em'
+      'height': '100%',
+      'padding': '0 0.5em',
+      'width': '100%',
     });
   }
 }

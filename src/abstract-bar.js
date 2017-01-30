@@ -5,7 +5,10 @@ export default class AbstractBar {
     this._root = select('body')
       .append('div')
       .remove()
-      .classed('scola control bar', true);
+      .classed('scola control bar', true)
+      .styles({
+        'display': 'flex'
+      });
   }
 
   destroy() {

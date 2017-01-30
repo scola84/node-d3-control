@@ -7,7 +7,6 @@ export default class BlockBar extends GroupBar {
     this._root
       .classed('block', true)
       .styles({
-        'display': 'flex',
         'flex-direction': 'row',
         'justify-content': 'space-around',
         'width': '100%'

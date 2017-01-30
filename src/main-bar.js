@@ -13,7 +13,6 @@ export default class MainBar extends AbstractBar {
       .classed('main', true)
       .styles({
         'background': '#FAFAFA',
-        'display': 'flex',
         'justify-content': 'space-between'
       });
 
@@ -22,7 +21,7 @@ export default class MainBar extends AbstractBar {
       .classed('scola center', true)
       .styles({
         'display': 'flex',
-        'flex': 1,
+        'flex-grow': 1,
         'flex-direction': 'row',
         'justify-content': 'center',
         'order': 2,
@@ -133,6 +132,7 @@ export default class MainBar extends AbstractBar {
   _sides() {
     this._left = this._root
       .append('div')
+      .remove()
       .classed('scola left', true)
       .styles({
         'display': 'flex',
@@ -142,8 +142,12 @@ export default class MainBar extends AbstractBar {
         'order': 1
       });
 
+    this._root.node()
+      .insertBefore(this._left.node(), this._center.node());
+
     this._right = this._root
       .append('div')
+      .remove()
       .classed('scola right', true)
       .styles({
         'display': 'flex',
@@ -152,5 +156,7 @@ export default class MainBar extends AbstractBar {
         'min-width': '30%',
         'order': 3
       });
+
+    this._root.node().appendChild(this._right.node());
   }
 }

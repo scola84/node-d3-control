@@ -9,7 +9,6 @@ export default class Text {
       .classed('scola text', true)
       .styles({
         'cursor': 'pointer',
-        'display': 'flex',
         'overflow': 'hidden',
       });
 

@@ -10,7 +10,6 @@ export default class AbstractIcon {
       .classed('scola icon', true)
       .styles({
         'cursor': 'pointer',
-        'display': 'flex'
       });
 
     this._icon = this._root

@@ -11,7 +11,6 @@ export default class BlockButton extends GroupButton {
       .classed('block', true)
       .styles({
         'cursor': 'pointer',
-        'display': 'flex',
         'flex-direction': 'column'
       });
   }

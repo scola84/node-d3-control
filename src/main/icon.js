@@ -9,7 +9,7 @@ export default class Icon extends AbstractIcon {
     });
 
     this._icon.styles({
-      'display': 'flex',
+      'height': '100%',
       'padding-left':'inherit',
       'padding-right':'inherit',
     });

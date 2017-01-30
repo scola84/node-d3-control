@@ -8,10 +8,10 @@ export default class InlineBar extends GroupBar {
     this._root
       .classed('inline', true)
       .styles({
+        'align-items': 'stretch',
         'border': '1px solid #007AFF',
         'border-radius': '0.3em',
         'color': '#007AFF',
-        'display': 'flex',
         'height': '2em',
         'margin': '0.5em 0',
         'overflow': 'hidden'
