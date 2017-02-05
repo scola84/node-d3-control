@@ -1,9 +1,9 @@
-import GroupButton from './group-button';
+import AbstractButton from './abstract-button';
 import Icon from './block/icon';
 import Text from './block/text';
 import 'd3-selection-multi';
 
-export default class BlockButton extends GroupButton {
+export default class BlockButton extends AbstractButton {
   constructor() {
     super();
 

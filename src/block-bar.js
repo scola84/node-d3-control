@@ -1,6 +1,6 @@
-import GroupBar from './group-bar';
+import AbstractBar from './abstract-bar';
 
-export default class BlockBar extends GroupBar {
+export default class BlockBar extends AbstractBar {
   constructor() {
     super();
 

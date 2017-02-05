@@ -1,7 +1,7 @@
-import GroupBar from './group-bar';
+import AbstractBar from './abstract-bar';
 import 'd3-selection-multi';
 
-export default class InlineBar extends GroupBar {
+export default class InlineBar extends AbstractBar {
   constructor() {
     super();
 

@@ -1,7 +1,7 @@
 import AbstractBar from './abstract-bar';
 import 'd3-selection-multi';
 
-export default class MainBar extends AbstractBar {
+export default class ControlBar extends AbstractBar {
   constructor() {
     super();
 
@@ -34,52 +34,35 @@ export default class MainBar extends AbstractBar {
       return this._center;
     }
 
-    if (action === true) {
-      this._center.node()
-        .appendChild(element.root().node());
-    } else if (action === false) {
-      element.root().remove();
+    if (action === false) {
+      return this._deleteElement(element);
     }
 
-    return this;
+    return this._insertCenter(element);
   }
 
   left(element = null, action = true) {
-    if (!this._left) {
-      this._sides();
-    }
-
     if (element === null) {
       return this._left;
     }
 
-    if (action === true) {
-      this._left.node()
-        .appendChild(element.root().node());
-    } else if (action === false) {
-      element.root().remove();
+    if (action === false) {
+      return this._deleteElement(element);
     }
 
-    return this;
+    return this._insertLeft(element);
   }
 
   right(element = null, action = true) {
-    if (!this._right) {
-      this._sides();
-    }
-
     if (element === null) {
       return this._right;
     }
 
-    if (action === true) {
-      this._right.node()
-        .appendChild(element.root().node());
-    } else if (action === false) {
-      element.root().remove();
+    if (action === false) {
+      return this._deleteElement(element);
     }
 
-    return this;
+    return this._insertRight(element);
   }
 
   title(value = null) {
@@ -127,6 +110,43 @@ export default class MainBar extends AbstractBar {
     }
 
     return this;
+  }
+
+  _insertCenter(element) {
+    this._center.node()
+      .appendChild(element.root().node());
+
+    element.center();
+    return element;
+  }
+
+  _insertLeft(element) {
+    if (!this._left) {
+      this._sides();
+    }
+
+    this._left.node()
+      .appendChild(element.root().node());
+
+    element.left();
+    return element;
+  }
+
+  _insertRight(element) {
+    if (!this._right) {
+      this._sides();
+    }
+
+    this._right.node()
+      .appendChild(element.root().node());
+
+    element.right();
+    return element;
+  }
+
+  _deleteElement(element) {
+    element.root().remove();
+    return element;
   }
 
   _sides() {
