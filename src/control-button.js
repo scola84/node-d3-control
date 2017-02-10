@@ -1,7 +1,6 @@
 import AbstractButton from './abstract-button';
 import Icon from './control/icon';
 import Text from './control/text';
-import 'd3-selection-multi';
 
 export default class ControlButton extends AbstractButton {
   constructor() {

@@ -1,7 +1,6 @@
 import AbstractButton from './abstract-button';
 import Icon from './inline/icon';
 import Text from './inline/text';
-import 'd3-selection-multi';
 
 export default class InlineButton extends AbstractButton {
   constructor() {

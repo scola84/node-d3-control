@@ -1,8 +1,9 @@
-import { select } from 'd3-selection';
+import { select } from 'd3';
 
 export default class AbstractBar {
   constructor() {
     this._buttons = new Set();
+    this._gesture = null;
 
     this._root = select('body')
       .append('div')
@@ -11,9 +12,13 @@ export default class AbstractBar {
       .styles({
         'display': 'flex'
       });
+
+    this._bindRoot();
   }
 
   destroy() {
+    this._unbindRoot();
+
     this._buttons.forEach((button) => {
       button.destroy();
     });
@@ -33,6 +38,25 @@ export default class AbstractBar {
     }
 
     return this._insertButton(button);
+  }
+
+  _bindRoot() {
+    this._gesture = this._root
+      .gesture()
+      .on('panstart', (e) => e.stopPropagation())
+      .on('panright', (e) => e.stopPropagation())
+      .on('panleft', (e) => e.stopPropagation())
+      .on('panend', (e) => e.stopPropagation())
+      .on('swiperight', (e) => e.stopPropagation())
+      .on('swipeleft', (e) => e.stopPropagation())
+      .on('tap', (e) => e.stopPropagation());
+  }
+
+  _unbindRoot() {
+    if (this._gesture) {
+      this._gesture.destroy();
+      this._gesture = null;
+    }
   }
 
   _insertButton(button) {

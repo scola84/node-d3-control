@@ -1,4 +1,4 @@
-import { select } from 'd3-selection';
+import { select } from 'd3';
 
 export default class AbstractButton {
   constructor() {
@@ -70,7 +70,7 @@ export default class AbstractButton {
   first() {}
 
   _bindRoot() {
-    this._root.on('click.scola-control', () => this._handleClick());
+    this._root.on('click.scola-control', () => this._click());
   }
 
   _unbindRoot() {
@@ -103,7 +103,7 @@ export default class AbstractButton {
     });
   }
 
-  _handleClick() {
+  _click() {
     if (this._model) {
       this._model.set(this._name, this._value);
     }

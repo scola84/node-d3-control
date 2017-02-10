@@ -1,5 +1,4 @@
 import AbstractBar from './abstract-bar';
-import 'd3-selection-multi';
 
 export default class InlineBar extends AbstractBar {
   constructor() {

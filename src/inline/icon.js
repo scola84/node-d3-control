@@ -1,5 +1,4 @@
 import AbstractIcon from '../abstract-icon';
-import 'd3-selection-multi';
 
 export default class Icon extends AbstractIcon {
   constructor() {
