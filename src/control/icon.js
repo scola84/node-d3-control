@@ -5,11 +5,12 @@ export default class Icon extends AbstractIcon {
     super();
 
     this._root.styles({
+      'align-items': 'stretch',
+      'display': 'flex',
       'padding': '0.5em 0.125em'
     });
 
     this._icon.styles({
-      'height': '100%',
       'padding-left':'inherit',
       'padding-right':'inherit',
     });

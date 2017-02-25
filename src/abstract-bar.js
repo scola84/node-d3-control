@@ -10,7 +10,8 @@ export default class AbstractBar {
       .remove()
       .classed('scola control bar', true)
       .styles({
-        'display': 'flex'
+        'display': 'flex',
+        'position': 'relative'
       });
 
     this._bindRoot();
@@ -40,6 +41,14 @@ export default class AbstractBar {
     return this._insertButton(button);
   }
 
+  disabled(action = true) {
+    if (action === true) {
+      this._insertLock();
+    } else {
+      this._deleteLock();
+    }
+  }
+
   _bindRoot() {
     this._gesture = this._root
       .gesture()
@@ -61,10 +70,9 @@ export default class AbstractBar {
 
   _insertButton(button) {
     button.first(this._buttons.size === 0);
-    this._buttons.add(button);
 
-    this._root.node()
-      .appendChild(button.root().node());
+    this._buttons.add(button);
+    this._root.append(() => button.root().node());
 
     return button;
   }
@@ -74,5 +82,37 @@ export default class AbstractBar {
     button.root().remove();
 
     return button;
+  }
+
+  _insertLock() {
+    if (this._lock) {
+      return;
+    }
+
+    this._lock = this._root
+      .append('div')
+      .classed('scola lock', true)
+      .styles({
+        'bottom': 0,
+        'left': 0,
+        'position': 'absolute',
+        'right': 0,
+        'top': 0
+      });
+
+    this._root
+      .selectAll('button')
+      .attr('disabled', 'disabled');
+  }
+
+  _deleteLock() {
+    if (this._lock) {
+      this._lock.remove();
+      this._lock = null;
+    }
+
+    this._root
+      .selectAll('button')
+      .attr('disabled', null);
   }
 }

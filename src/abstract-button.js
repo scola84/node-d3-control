@@ -99,7 +99,7 @@ export default class AbstractButton {
   _order() {
     this._elements.forEach((element) => {
       element.order(this._root.node().children.length + 1);
-      this._root.node().appendChild(element.root().node());
+      this._root.append(() => element.root().node());
     });
   }
 

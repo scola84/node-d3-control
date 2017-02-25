@@ -55,12 +55,21 @@ export default class Text {
     return this;
   }
 
-  text(value) {
+  text(value = null) {
     if (value === null) {
-      return this._text.text();
+      return this._text;
     }
 
     this._text.text(value);
+    return this;
+  }
+
+  type(value = null) {
+    if (value === null) {
+      return this._text.attr('type');
+    }
+
+    this._text.attr('type', value);
     return this;
   }
 }

@@ -112,10 +112,9 @@ export default class ControlBar extends AbstractBar {
   }
 
   _insertCenter(element) {
-    this._center.node()
-      .appendChild(element.root().node());
-
+    this._center.append(() => element.root().node());
     element.center();
+
     return element;
   }
 
@@ -124,10 +123,9 @@ export default class ControlBar extends AbstractBar {
       this._sides();
     }
 
-    this._left.node()
-      .appendChild(element.root().node());
-
+    this._left.append(() => element.root().node());
     element.left();
+
     return element;
   }
 
@@ -136,10 +134,9 @@ export default class ControlBar extends AbstractBar {
       this._sides();
     }
 
-    this._right.node()
-      .appendChild(element.root().node());
-
+    this._right.append(() => element.root().node());
     element.right();
+
     return element;
   }
 
@@ -176,6 +173,6 @@ export default class ControlBar extends AbstractBar {
         'order': 3
       });
 
-    this._root.node().appendChild(this._right.node());
+    this._root.append(() => this._right.node());
   }
 }

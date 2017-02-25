@@ -5,12 +5,13 @@ export default class Text extends AbstractText {
     super();
 
     this._root.styles({
+      'align-items': 'stretch',
+      'display': 'flex',
       'flex-grow': 1
     });
 
     this._text.styles({
       'font-size': '0.9em',
-      'height': '100%',
       'line-height': '2em',
       'padding': '0 0.5em',
       'width': '100%'
