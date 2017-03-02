@@ -20,9 +20,8 @@ export default class InlineButton extends AbstractButton {
       .append('div')
       .classed('scola border', true)
       .styles({
+        'border-left': '1px solid',
         'border-left-color': 'inherit',
-        'border-left-style': 'solid',
-        'border-left-width': '1px',
         'order': 1,
         'width': 0
       });

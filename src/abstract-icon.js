@@ -20,7 +20,7 @@ export default class AbstractIcon {
       })
       .styles({
         'background': 'none',
-        'border': 0,
+        'border': '1px solid transparent',
         'color': 'inherit',
         'cursor': 'pointer',
         'font-size': '2em',
