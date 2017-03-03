@@ -2,6 +2,7 @@ import BlockBar from './src/block-bar';
 import BlockButton from './src/block-button';
 import ControlBar from './src/control-bar';
 import ControlButton from './src/control-button';
+import ControlInput from './src/control-input';
 import InlineBar from './src/inline-bar';
 import InlineButton from './src/inline-button';
 
@@ -19,6 +20,10 @@ export function controlBar() {
 
 export function controlButton() {
   return new ControlButton();
+}
+
+export function controlInput() {
+  return new ControlInput();
 }
 
 export function inlineBar() {

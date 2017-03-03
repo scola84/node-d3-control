@@ -1,11 +1,12 @@
 import { select } from 'd3';
+import { Observer } from '@scola/d3-model';
 
-export default class AbstractButton {
+export default class AbstractButton extends Observer {
   constructor() {
+    super();
+
     this._elements = [];
-    this._name = null;
     this._value = null;
-    this._model = null;
 
     this._root = select('body')
       .append('div')
@@ -15,13 +16,11 @@ export default class AbstractButton {
         'display': 'flex'
       });
 
-    this._handleSet = (e) => this._set(e);
     this._bindRoot();
   }
 
   destroy() {
     this._unbindRoot();
-    this._unbindModel();
 
     this._root.dispatch('destroy');
     this._root.remove();
@@ -30,15 +29,6 @@ export default class AbstractButton {
 
   root() {
     return this._root;
-  }
-
-  name(value = null) {
-    if (value === null) {
-      return this._name;
-    }
-
-    this._name = value;
-    return this;
   }
 
   value(buttonValue = null) {
@@ -50,23 +40,6 @@ export default class AbstractButton {
     return this;
   }
 
-  model(value = null) {
-    if (value === null) {
-      return this._model;
-    }
-
-    this._model = value;
-    this._bindModel();
-
-    this._set({
-      name: this._name,
-      scope: 'model',
-      value: value.get(this._name)
-    });
-
-    return this;
-  }
-
   first() {}
 
   _bindRoot() {
@@ -75,20 +48,6 @@ export default class AbstractButton {
 
   _unbindRoot() {
     this._root.on('click.scola-control', null);
-  }
-
-  _bindModel() {
-    if (this._model) {
-      this._model.setMaxListeners(this._model.getMaxListeners() + 1);
-      this._model.addListener('set', this._handleSet);
-    }
-  }
-
-  _unbindModel() {
-    if (this._model) {
-      this._model.setMaxListeners(this._model.getMaxListeners() - 1);
-      this._model.removeListener('set', this._handleSet);
-    }
   }
 
   _add(element) {
@@ -108,6 +67,4 @@ export default class AbstractButton {
       this._model.set(this._name, this._value);
     }
   }
-
-  _set() {}
 }

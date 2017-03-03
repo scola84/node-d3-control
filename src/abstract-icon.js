@@ -39,6 +39,10 @@ export default class AbstractIcon {
     return this._root;
   }
 
+  icon() {
+    return this._icon;
+  }
+
   class(value = null) {
     if (value === null) {
       return this._icon.classed();

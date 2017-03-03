@@ -12,7 +12,25 @@ export default class ControlBar extends AbstractBar {
       .classed('main', true)
       .styles({
         'background': '#FAFAFA',
-        'justify-content': 'space-between'
+        'flex-flow': 'wrap row'
+      });
+
+    this._top = this._root
+      .append('div')
+      .classed('scola top', true)
+      .styles({
+        'display': 'flex',
+        'flex-basis': '100%',
+        'order': 1
+      });
+
+    this._left = this._root
+      .append('div')
+      .classed('scola left', true)
+      .styles({
+        'display': 'flex',
+        'flex-direction': 'row',
+        'order': 2
       });
 
     this._center = this._root
@@ -23,9 +41,51 @@ export default class ControlBar extends AbstractBar {
         'flex-grow': 1,
         'flex-direction': 'row',
         'justify-content': 'center',
-        'order': 2,
+        'order': 3,
         'overflow': 'hidden'
       });
+
+    this._right = this._root
+      .append('div')
+      .classed('scola right', true)
+      .styles({
+        'display': 'flex',
+        'flex-direction': 'row-reverse',
+        'order': 4
+      });
+
+    this._bottom = this._root
+      .append('div')
+      .classed('scola bottom', true)
+      .styles({
+        'display': 'flex',
+        'flex-basis': '100%',
+        'order': 5
+      });
+  }
+
+  bottom(element = null, action = true) {
+    if (element === null) {
+      return this._bottom;
+    }
+
+    if (action === false) {
+      return this._deleteElement(element);
+    }
+
+    return this._insertBottom(element);
+  }
+
+  top(element = null, action = true) {
+    if (element === null) {
+      return this._top;
+    }
+
+    if (action === false) {
+      return this._deleteElement(element);
+    }
+
+    return this._insertTop(element);
   }
 
   center(element = null, action = true) {
@@ -111,6 +171,16 @@ export default class ControlBar extends AbstractBar {
     return this;
   }
 
+  _insertBottom(element) {
+    this._bottom.append(() => element.root().node());
+    return element;
+  }
+
+  _insertTop(element) {
+    this._top.append(() => element.root().node());
+    return element;
+  }
+
   _insertCenter(element) {
     this._center.append(() => element.root().node());
     element.center();
@@ -119,10 +189,7 @@ export default class ControlBar extends AbstractBar {
   }
 
   _insertLeft(element) {
-    if (!this._left) {
-      this._sides();
-    }
-
+    this._sides();
     this._left.append(() => element.root().node());
     element.left();
 
@@ -130,10 +197,7 @@ export default class ControlBar extends AbstractBar {
   }
 
   _insertRight(element) {
-    if (!this._right) {
-      this._sides();
-    }
-
+    this._sides();
     this._right.append(() => element.root().node());
     element.right();
 
@@ -146,33 +210,14 @@ export default class ControlBar extends AbstractBar {
   }
 
   _sides() {
-    this._left = this._root
-      .append('div')
-      .remove()
-      .classed('scola left', true)
-      .styles({
-        'display': 'flex',
-        'flex-basis': '30%',
-        'flex-direction': 'row',
-        'min-width': '30%',
-        'order': 1
-      });
+    this._left.styles({
+      'flex-basis': '30%',
+      'min-width': '30%',
+    });
 
-    this._root.node()
-      .insertBefore(this._left.node(), this._center.node());
-
-    this._right = this._root
-      .append('div')
-      .remove()
-      .classed('scola right', true)
-      .styles({
-        'display': 'flex',
-        'flex-basis': '30%',
-        'flex-direction': 'row-reverse',
-        'min-width': '30%',
-        'order': 3
-      });
-
-    this._root.append(() => this._right.node());
+    this._right.styles({
+      'flex-basis': '30%',
+      'min-width': '30%',
+    });
   }
 }

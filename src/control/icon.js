@@ -11,8 +11,20 @@ export default class Icon extends AbstractIcon {
     });
 
     this._icon.styles({
-      'padding-left':'inherit',
-      'padding-right':'inherit',
+      'padding-left': 'inherit',
+      'padding-right': 'inherit',
     });
+  }
+
+  circle(background = '#007AFF') {
+    this._icon.styles({
+      background,
+      'border-radius': '1em',
+      'color': '#FFF',
+      'height': '1em',
+      'width': '1em'
+    });
+
+    return this;
   }
 }
