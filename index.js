@@ -6,30 +6,40 @@ import ControlInput from './src/control-input';
 import InlineBar from './src/inline-bar';
 import InlineButton from './src/inline-button';
 
-export function blockBar() {
+function blockBar() {
   return new BlockBar();
 }
 
-export function blockButton() {
+function blockButton() {
   return new BlockButton();
 }
 
-export function controlBar() {
+function controlBar() {
   return new ControlBar();
 }
 
-export function controlButton() {
+function controlButton() {
   return new ControlButton();
 }
 
-export function controlInput() {
+function controlInput() {
   return new ControlInput();
 }
 
-export function inlineBar() {
+function inlineBar() {
   return new InlineBar();
 }
 
-export function inlineButton() {
+function inlineButton() {
   return new InlineButton();
 }
+
+export {
+  blockBar,
+  blockButton,
+  controlBar,
+  controlButton,
+  controlInput,
+  inlineBar,
+  inlineButton
+};
