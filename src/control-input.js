@@ -26,17 +26,12 @@ export default class ControlInput extends Observer {
         'border': '1px solid #EEE',
         'bottom': '100%',
         'line-height': '1.5em',
-        'min-height': '2em',
         'padding': '0.2em 0.35em',
         'position': 'absolute'
       });
 
     this._input = this._root
       .append('textarea')
-      .attrs({
-        rows: 1,
-        cols: 1
-      })
       .styles({
         'background': '#FFF',
         'border': '1px solid #EEE',
@@ -44,11 +39,12 @@ export default class ControlInput extends Observer {
         'color': 'inherit',
         'line-height': '1.5em',
         'margin': 0,
-        'min-height': '2em',
-        'overflow': 'auto',
+        'height': '2em',
+        'overflow-x': 'hidden',
+        'overflow-y': 'auto',
         'padding': '0.2em 0.35em',
         'resize': 'none',
-        'width': '100%'
+        'width': '100%',
       });
 
     this._bindInput();
@@ -119,23 +115,29 @@ export default class ControlInput extends Observer {
 
   _height() {
     const height = ((this._lines * 1.5) + 0.4);
-    this._input.style('max-height', height + 'em');
+    const wrap = this._lines === 1 ? 'nowrap' : 'normal';
+
+    this._input.styles({
+      'max-height': height + 'em',
+      'white-space': wrap
+    });
   }
 
   _change() {
-    const value = this._input.property('value');
-    this._model.set(this._name, value);
+    if (this._model) {
+      const value = this._input.property('value');
+      this._model.set(this._name, value);
+    }
   }
 
   _key(keyEvent) {
     // Adapted from https://github.com/jaz303/jquery-grab-bag/blob/master/javascripts/jquery.autogrow-textarea.js
 
-    if (this._lines === 1) {
-      if (keyEvent.keyCode === 13) {
+    if (keyEvent.keyCode === 13) {
+      if (this._lines === 1 || keyEvent.ctrlKey === true) {
         keyEvent.preventDefault();
+        return;
       }
-
-      return;
     }
 
     const width = parseFloat(this._input.style('width'));
@@ -145,11 +147,11 @@ export default class ControlInput extends Observer {
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
-      .replace(/\n$/, '<br/>&#xa0;')
+      .replace(/\n$/, '<br/>&nbsp;')
       .replace(/\n/g, '<br/>');
 
     value += keyEvent.type === 'keydown' && keyEvent.keyCode === 13 ?
-      '<br/>&#xa0;' : '';
+      '<br/>&nbsp;' : '..';
 
     this._shadow.style('width', width + 'px').html(value);
 
