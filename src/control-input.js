@@ -26,7 +26,7 @@ export default class ControlInput extends Observer {
         'border': '1px solid #EEE',
         'bottom': '100%',
         'line-height': '1.5em',
-        'padding': '0.2em 0.35em',
+        'padding': '0.15em 0.35em',
         'position': 'absolute'
       });
 
@@ -42,7 +42,7 @@ export default class ControlInput extends Observer {
         'height': '2em',
         'overflow-x': 'hidden',
         'overflow-y': 'auto',
-        'padding': '0.2em 0.35em',
+        'padding': '0.125em 0.35em',
         'resize': 'none',
         'width': '100%',
       });
@@ -100,6 +100,12 @@ export default class ControlInput extends Observer {
     this._input.attr('type', value);
     return this;
   }
+
+  left() {}
+
+  center() {}
+
+  right() {}
 
   _bindInput() {
     this._input.on('input.scola-control', () => this._change());
