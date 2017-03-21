@@ -7,7 +7,7 @@ export default class Text {
       .remove()
       .classed('scola text', true)
       .styles({
-        'cursor': 'pointer',
+        'cursor': 'inherit',
         'overflow': 'hidden',
       });
 
@@ -21,7 +21,7 @@ export default class Text {
         'background': 'none',
         'border': '1px solid transparent',
         'color': 'inherit',
-        'cursor': 'pointer',
+        'cursor': 'inherit',
         'margin': 0,
         'padding': 0
       });

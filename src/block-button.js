@@ -9,7 +9,6 @@ export default class BlockButton extends AbstractButton {
     this._root
       .classed('block', true)
       .styles({
-        'cursor': 'pointer',
         'flex-direction': 'column'
       });
   }

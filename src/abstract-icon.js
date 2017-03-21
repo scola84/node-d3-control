@@ -9,7 +9,7 @@ export default class AbstractIcon {
       .remove()
       .classed('scola icon', true)
       .styles({
-        'cursor': 'pointer',
+        'cursor': 'inherit',
       });
 
     this._icon = this._root
@@ -22,7 +22,7 @@ export default class AbstractIcon {
         'background': 'none',
         'border': '1px solid transparent',
         'color': 'inherit',
-        'cursor': 'pointer',
+        'cursor': 'inherit',
         'font-size': '2em',
         'margin': 0,
         'padding': 0

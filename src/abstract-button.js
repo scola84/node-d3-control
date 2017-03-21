@@ -6,13 +6,14 @@ export default class AbstractButton extends Observer {
     super();
 
     this._elements = [];
-    this._value = null;
+    this._disabled = false;
 
     this._root = select('body')
       .append('div')
       .remove()
       .classed('scola control button', true)
       .styles({
+        'cursor': 'pointer',
         'display': 'flex'
       });
 
@@ -31,12 +32,14 @@ export default class AbstractButton extends Observer {
     return this._root;
   }
 
-  value(buttonValue = null) {
-    if (buttonValue === null) {
-      return this._value;
+  disabled(value = null) {
+    if (value === null) {
+      return this._disabled;
     }
 
-    this._value = buttonValue;
+    this._disabled = value;
+    this._root.classed('disabled', value);
+
     return this;
   }
 
@@ -63,7 +66,7 @@ export default class AbstractButton extends Observer {
   }
 
   _click() {
-    if (this._model) {
+    if (this._disabled === false && this._model) {
       this._model.set(this._name, this._value);
     }
   }
