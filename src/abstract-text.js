@@ -37,6 +37,15 @@ export default class Text {
     return this._root;
   }
 
+  color(value = null) {
+    if (value === null) {
+      return this._root.style('color');
+    }
+
+    this._root.style('color', value);
+    return this;
+  }
+
   order(value = null) {
     if (value === null) {
       return this._root.style('order');
