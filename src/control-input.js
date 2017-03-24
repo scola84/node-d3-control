@@ -6,6 +6,7 @@ export default class ControlInput extends Observer {
     super();
 
     this._lines = 1;
+    this._resizer = null;
 
     this._root = select('body')
       .append('div')
@@ -23,23 +24,26 @@ export default class ControlInput extends Observer {
     this._shadow = this._root
       .append('div')
       .styles({
-        'border': '1px solid #EEE',
         'bottom': '100%',
         'line-height': '1.5em',
         'padding': '0.15em 0.35em',
         'position': 'absolute'
-      });
+      })
+      .html('&nbsp;');
 
     this._input = this._root
       .append('textarea')
+      .attrs({
+        'cols': 1,
+        'rows': 1
+      })
       .styles({
         'background': '#FFF',
-        'border': '1px solid #EEE',
+        'border': '0',
         'border-radius': '0.5em',
         'color': 'inherit',
         'line-height': '1.5em',
         'margin': 0,
-        'height': '2em',
         'overflow-x': 'hidden',
         'overflow-y': 'auto',
         'padding': '0.125em 0.35em',
@@ -48,11 +52,12 @@ export default class ControlInput extends Observer {
       });
 
     this._bindInput();
-    this._height();
+    this._maxHeight();
   }
 
   destroy() {
     this._unbindInput();
+    this._unbindResizer();
   }
 
   root() {
@@ -69,7 +74,18 @@ export default class ControlInput extends Observer {
     }
 
     this._lines = value;
-    this._height();
+    this._maxHeight();
+
+    return this;
+  }
+
+  resizer(value = null) {
+    if (value === null) {
+      return this._resizer;
+    }
+
+    this._resizer = value;
+    this._bindResizer();
 
     return this;
   }
@@ -101,6 +117,8 @@ export default class ControlInput extends Observer {
     return this;
   }
 
+  bottom() {}
+
   left() {}
 
   center() {}
@@ -119,14 +137,18 @@ export default class ControlInput extends Observer {
     this._input.on('keyup.scola-control', null);
   }
 
-  _height() {
-    const height = ((this._lines * 1.5) + 0.4);
-    const wrap = this._lines === 1 ? 'nowrap' : 'normal';
+  _bindResizer() {
+    if (this._resizer) {
+      this._resizer.root()
+        .on('resize.scola-control', () => this._height());
+    }
+  }
 
-    this._input.styles({
-      'max-height': height + 'em',
-      'white-space': wrap
-    });
+  _unbindResizer() {
+    if (this._resizer) {
+      this._resizer.root()
+        .on('resize.scola-control', null);
+    }
   }
 
   _change() {
@@ -160,10 +182,7 @@ export default class ControlInput extends Observer {
       '<br/>&nbsp;' : '..';
 
     this._shadow.style('width', width + 'px').html(value);
-
-    const height = parseFloat(this._shadow.style('height'));
-
-    this._input.style('height', height + 'px');
+    this._height();
   }
 
   _set(setEvent) {
@@ -173,5 +192,21 @@ export default class ControlInput extends Observer {
 
     const value = this._format(setEvent.value);
     this._input.property('value', value);
+    this._key({});
+  }
+
+  _height() {
+    const height = parseFloat(this._shadow.style('height'));
+    this._input.style('height', height + 'px');
+  }
+
+  _maxHeight() {
+    const height = ((this._lines * 1.5) + 0.4);
+    const wrap = this._lines === 1 ? 'nowrap' : 'normal';
+
+    this._input.styles({
+      'max-height': height + 'em',
+      'white-space': wrap
+    });
   }
 }

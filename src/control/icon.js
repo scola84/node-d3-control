@@ -7,7 +7,7 @@ export default class Icon extends AbstractIcon {
     this._root.styles({
       'align-items': 'stretch',
       'display': 'flex',
-      'padding': '0.5em 0.125em'
+      'padding': '0 0.125em'
     });
 
     this._icon.styles({
@@ -17,10 +17,13 @@ export default class Icon extends AbstractIcon {
   }
 
   circle(background = '#007AFF') {
+    this._root.styles({
+      'color': '#FFF'
+    });
+
     this._icon.styles({
       background,
       'border-radius': '1em',
-      'color': '#FFF',
       'height': '1em',
       'width': '1em'
     });

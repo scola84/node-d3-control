@@ -12,14 +12,14 @@ export default class ControlBar extends AbstractBar {
       .classed('main', true)
       .styles({
         'background': '#FAFAFA',
-        'flex-flow': 'wrap row'
+        'flex-flow': 'wrap row',
       });
 
     this._top = this._root
       .append('div')
       .classed('scola top', true)
       .styles({
-        'display': 'flex',
+        'display': 'none',
         'flex-basis': '100%',
         'order': 1
       });
@@ -30,7 +30,8 @@ export default class ControlBar extends AbstractBar {
       .styles({
         'display': 'flex',
         'flex-direction': 'row',
-        'order': 2
+        'order': 2,
+        'padding': '0.5em 0'
       });
 
     this._center = this._root
@@ -42,7 +43,8 @@ export default class ControlBar extends AbstractBar {
         'flex-direction': 'row',
         'justify-content': 'center',
         'order': 3,
-        'overflow': 'hidden'
+        'overflow': 'hidden',
+        'padding': '0.5em 0'
       });
 
     this._right = this._root
@@ -51,16 +53,21 @@ export default class ControlBar extends AbstractBar {
       .styles({
         'display': 'flex',
         'flex-direction': 'row-reverse',
-        'order': 4
+        'order': 4,
+        'padding': '0.5em 0'
       });
 
     this._bottom = this._root
       .append('div')
       .classed('scola bottom', true)
       .styles({
-        'display': 'flex',
+        'background': '#CCC',
+        'display': 'none',
         'flex-basis': '100%',
-        'order': 5
+        'justify-content': 'center',
+        'margin-top': '-1px',
+        'order': 5,
+        'padding': '0.125em 0'
       });
   }
 
@@ -146,7 +153,7 @@ export default class ControlBar extends AbstractBar {
       .classed('scola title', true)
       .styles({
         'font-weight': 'bold',
-        'line-height': '3em',
+        'line-height': '2em',
         'overflow': 'hidden',
         'text-align': 'center',
         'text-overflow': 'ellipsis',
@@ -172,12 +179,19 @@ export default class ControlBar extends AbstractBar {
   }
 
   _insertBottom(element) {
-    this._bottom.append(() => element.root().node());
+    this._bottom
+      .style('display', 'flex')
+      .append(() => element.root().node());
+
+    element.bottom();
     return element;
   }
 
   _insertTop(element) {
-    this._top.append(() => element.root().node());
+    this._top
+      .style('display', 'flex')
+      .append(() => element.root().node());
+
     return element;
   }
 

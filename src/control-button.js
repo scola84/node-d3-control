@@ -9,7 +9,6 @@ export default class ControlButton extends AbstractButton {
     this._root
       .classed('main', true)
       .styles({
-        'height': '3em',
         'margin-top': 'auto',
         'overflow': 'hidden'
       });
@@ -23,10 +22,23 @@ export default class ControlButton extends AbstractButton {
       });
   }
 
+  bottom() {
+    this._root.styles({
+      'height': '2em',
+      'margin-bottom': 'auto'
+    });
+
+    return this;
+  }
+
   center() {
     this._root.styles({
       'display': 'inline-flex',
       'flex-direction': 'row'
+    });
+
+    this._padding.styles({
+      'display': 'none'
     });
 
     return this;
