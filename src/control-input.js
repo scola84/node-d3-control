@@ -139,15 +139,15 @@ export default class ControlInput extends Observer {
 
   _bindResizer() {
     if (this._resizer) {
-      this._resizer.root()
-        .on('resize.scola-control', () => this._height());
+      this._resizer.root().on('resize.scola-control', () => {
+        this._height();
+      });
     }
   }
 
   _unbindResizer() {
     if (this._resizer) {
-      this._resizer.root()
-        .on('resize.scola-control', null);
+      this._resizer.root().on('resize.scola-control', null);
     }
   }
 
