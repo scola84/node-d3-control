@@ -17,7 +17,7 @@ export default class ControlInput extends Observer {
         'flex': 1,
         'flex-direction': 'column',
         'overflow': 'hidden',
-        'padding': '0.5em',
+        'padding': '0 0.5em',
         'position': 'relative'
       });
 
@@ -26,7 +26,7 @@ export default class ControlInput extends Observer {
       .styles({
         'bottom': '100%',
         'line-height': '1.5em',
-        'padding': '0.15em 0.35em',
+        'padding': '0.25em 0.35em',
         'position': 'absolute'
       })
       .html('&nbsp;');
@@ -46,7 +46,7 @@ export default class ControlInput extends Observer {
         'margin': 0,
         'overflow-x': 'hidden',
         'overflow-y': 'auto',
-        'padding': '0.125em 0.35em',
+        'padding': '0.25em 0.35em',
         'resize': 'none',
         'width': '100%',
       });
@@ -201,7 +201,7 @@ export default class ControlInput extends Observer {
   }
 
   _maxHeight() {
-    const height = ((this._lines * 1.5) + 0.4);
+    const height = ((this._lines * 1.5) + 0.5);
     const wrap = this._lines === 1 ? 'nowrap' : 'normal';
 
     this._input.styles({

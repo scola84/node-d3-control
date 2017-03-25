@@ -19,15 +19,21 @@ export default class ControlBar extends AbstractBar {
       .append('div')
       .classed('scola top', true)
       .styles({
+        'align-items': 'flex-end',
+        'background': '#CCC',
+        'border-bottom': '1px solid #CCC',
         'display': 'none',
         'flex-basis': '100%',
-        'order': 1
+        'justify-content': 'center',
+        'order': 1,
+        'padding': '0.5em 0'
       });
 
     this._left = this._root
       .append('div')
       .classed('scola left', true)
       .styles({
+        'align-items': 'flex-end',
         'display': 'flex',
         'flex-direction': 'row',
         'order': 2,
@@ -38,6 +44,7 @@ export default class ControlBar extends AbstractBar {
       .append('div')
       .classed('scola center', true)
       .styles({
+        'align-items': 'flex-end',
         'display': 'flex',
         'flex-grow': 1,
         'flex-direction': 'row',
@@ -51,6 +58,7 @@ export default class ControlBar extends AbstractBar {
       .append('div')
       .classed('scola right', true)
       .styles({
+        'align-items': 'flex-end',
         'display': 'flex',
         'flex-direction': 'row-reverse',
         'order': 4,
@@ -62,12 +70,12 @@ export default class ControlBar extends AbstractBar {
       .classed('scola bottom', true)
       .styles({
         'background': '#CCC',
+        'border-bottom': '1px solid #CCC',
         'display': 'none',
         'flex-basis': '100%',
         'justify-content': 'center',
-        'margin-top': '-1px',
         'order': 5,
-        'padding': '0.125em 0'
+        'padding': '0.5em 0'
       });
   }
 
