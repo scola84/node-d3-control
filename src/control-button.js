@@ -22,10 +22,6 @@ export default class ControlButton extends AbstractButton {
       });
   }
 
-  bottom() {
-    return this;
-  }
-
   center() {
     this._root.styles({
       'display': 'inline-flex',

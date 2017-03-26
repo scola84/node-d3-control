@@ -5,28 +5,15 @@ export default class ControlBar extends AbstractBar {
     super();
 
     this._title = null;
-    this._left = null;
-    this._right = null;
+    this._open = false;
 
     this._root
       .classed('main', true)
       .styles({
         'background': '#FAFAFA',
+        'box-sizing': 'content-box',
         'flex-flow': 'wrap row',
-      });
-
-    this._top = this._root
-      .append('div')
-      .classed('scola top', true)
-      .styles({
-        'align-items': 'flex-end',
-        'background': '#CCC',
-        'border-bottom': '1px solid #CCC',
-        'display': 'none',
-        'flex-basis': '100%',
-        'justify-content': 'center',
-        'order': 1,
-        'padding': '0.5em 0'
+        'height': '3em'
       });
 
     this._left = this._root
@@ -71,7 +58,7 @@ export default class ControlBar extends AbstractBar {
       .styles({
         'background': '#CCC',
         'border-bottom': '1px solid #CCC',
-        'display': 'none',
+        'display': 'flex',
         'flex-basis': '100%',
         'justify-content': 'center',
         'order': 5,
@@ -89,18 +76,6 @@ export default class ControlBar extends AbstractBar {
     }
 
     return this._insertBottom(element);
-  }
-
-  top(element = null, action = true) {
-    if (element === null) {
-      return this._top;
-    }
-
-    if (action === false) {
-      return this._deleteElement(element);
-    }
-
-    return this._insertTop(element);
   }
 
   center(element = null, action = true) {
@@ -155,6 +130,23 @@ export default class ControlBar extends AbstractBar {
     return this._insertTitle(value);
   }
 
+  open(value = null) {
+    if (value === null) {
+      return this._open;
+    }
+
+    let height = parseFloat(this._root.style('height'));
+
+    height = this._open === true ?
+      (height - 1) / 2 : (height * 2) + 1;
+
+    this._open = value;
+
+    return this._root
+      .transition()
+      .style('height', height + 'px');
+  }
+
   _insertTitle(title) {
     this._title = this._center
       .append('div')
@@ -187,43 +179,27 @@ export default class ControlBar extends AbstractBar {
   }
 
   _insertBottom(element) {
-    this._bottom
-      .style('display', 'flex')
-      .append(() => element.root().node());
-
-    element.bottom();
-    return element;
-  }
-
-  _insertTop(element) {
-    this._top
-      .style('display', 'flex')
-      .append(() => element.root().node());
-
+    this._bottom.append(() => element.root().node());
     return element;
   }
 
   _insertCenter(element) {
     this._center.append(() => element.root().node());
-    element.center();
-
-    return element;
+    return element.center();
   }
 
   _insertLeft(element) {
     this._sides();
     this._left.append(() => element.root().node());
-    element.left();
 
-    return element;
+    return element.left();
   }
 
   _insertRight(element) {
     this._sides();
     this._right.append(() => element.root().node());
-    element.right();
 
-    return element;
+    return element.right();
   }
 
   _deleteElement(element) {
