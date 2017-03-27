@@ -68,11 +68,9 @@ export default class InlineButton extends AbstractButton {
     const selected = setEvent.value === this._value;
 
     this._root
-      .classed('selected', () => {
-        return selected;
-      })
+      .classed('selected', selected)
       .styles(() => {
-        return selected ? {
+        return selected === true ? {
           'background-color': '#007AFF',
           'color': '#FFF'
         } : {
