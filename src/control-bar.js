@@ -13,7 +13,8 @@ export default class ControlBar extends AbstractBar {
         'background': '#FAFAFA',
         'box-sizing': 'content-box',
         'flex-flow': 'wrap row',
-        'height': '3em'
+        'height': '3em',
+        'overflow': 'hidden'
       });
 
     this._left = this._root
