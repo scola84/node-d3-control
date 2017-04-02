@@ -21,6 +21,7 @@ export default class AbstractButton extends Observer {
   }
 
   destroy() {
+    super.destroy();
     this._unbindRoot();
 
     this._root.dispatch('destroy');
