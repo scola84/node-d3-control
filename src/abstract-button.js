@@ -7,6 +7,7 @@ export default class AbstractButton extends Observer {
 
     this._elements = [];
     this._disabled = false;
+    this._toggle = false;
 
     this._root = select('body')
       .append('div')
@@ -44,6 +45,17 @@ export default class AbstractButton extends Observer {
     return this;
   }
 
+  toggle(value = null) {
+    if (value === null) {
+      return this._toggle;
+    }
+
+    this._toggle = value;
+    this._root.classed('toggle', value);
+
+    return this;
+  }
+
   first() {}
 
   _bindRoot() {
@@ -67,8 +79,19 @@ export default class AbstractButton extends Observer {
   }
 
   _click() {
-    if (this._disabled === false && this._model) {
-      this._model.set(this._name, this._value);
+    const cancel =
+      this._disabled === true ||
+      this._model === null;
+
+    if (cancel === true) {
+      return;
     }
+
+    if (this._toggle === true) {
+      this._model.set(this._name, !this._model.get(this._name));
+      return;
+    }
+
+    this._model.set(this._name, this._value);
   }
 }

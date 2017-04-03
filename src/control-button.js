@@ -68,4 +68,22 @@ export default class ControlButton extends AbstractButton {
 
     return text;
   }
+
+  _set(setEvent) {
+    const cancel =
+      setEvent.name !== this._name ||
+      this._toggle === false;
+
+    if (cancel === true) {
+      return;
+    }
+
+    const selected = setEvent.value === this._value;
+
+    this._root
+      .classed('selected', selected)
+      .style('color', () => {
+        return selected === true ? '#007AFF' : 'inherit';
+      });
+  }
 }
