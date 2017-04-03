@@ -51,8 +51,9 @@ export default class AbstractButton extends Observer {
     }
 
     this._toggle = value;
-    this._root.classed('toggle', value);
+    this._value = true;
 
+    this._root.classed('toggle', value);
     return this;
   }
 
