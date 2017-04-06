@@ -56,6 +56,7 @@ export default class ControlInput extends Observer {
   }
 
   destroy() {
+    super.destroy();
     this._unbindInput();
     this._unbindResizer();
   }
