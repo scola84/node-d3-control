@@ -10,7 +10,6 @@ export default class AbstractBar {
       .remove()
       .classed('scola control bar', true)
       .styles({
-        'display': 'flex',
         'position': 'relative'
       });
 

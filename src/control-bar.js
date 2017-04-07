@@ -12,44 +12,51 @@ export default class ControlBar extends AbstractBar {
       .styles({
         'background': '#FAFAFA',
         'box-sizing': 'content-box',
-        'flex-flow': 'wrap row',
         'height': '3em',
         'overflow': 'hidden'
       });
 
-    this._left = this._root
+    this._top = this._root
+      .append('div')
+      .classed('scola top', true)
+      .styles({
+        'display': 'flex',
+        'flex-direction': 'row',
+        'height': '3em'
+      });
+
+    this._left = this._top
       .append('div')
       .classed('scola left', true)
       .styles({
         'align-items': 'flex-end',
         'display': 'flex',
+        'flex': 1,
         'flex-direction': 'row',
-        'order': 2,
         'padding': '0.5em 0'
       });
 
-    this._center = this._root
+    this._center = this._top
       .append('div')
       .classed('scola center', true)
       .styles({
         'align-items': 'flex-end',
         'display': 'flex',
-        'flex-grow': 1,
         'flex-direction': 'row',
         'justify-content': 'center',
-        'order': 3,
         'overflow': 'hidden',
-        'padding': '0.5em 0'
+        'padding': '0.5em 0',
+        'max-width': '40%'
       });
 
-    this._right = this._root
+    this._right = this._top
       .append('div')
       .classed('scola right', true)
       .styles({
         'align-items': 'flex-end',
         'display': 'flex',
+        'flex': 1,
         'flex-direction': 'row-reverse',
-        'order': 4,
         'padding': '0.5em 0'
       });
 
@@ -60,9 +67,7 @@ export default class ControlBar extends AbstractBar {
         'background': '#CCC',
         'border-bottom': '1px solid #CCC',
         'display': 'flex',
-        'flex-basis': '100%',
         'justify-content': 'center',
-        'order': 5,
         'padding': '0.5em 0'
       });
   }
@@ -190,33 +195,17 @@ export default class ControlBar extends AbstractBar {
   }
 
   _insertLeft(element) {
-    this._sides();
     this._left.append(() => element.root().node());
-
     return element.left();
   }
 
   _insertRight(element) {
-    this._sides();
     this._right.append(() => element.root().node());
-
     return element.right();
   }
 
   _deleteElement(element) {
     element.root().remove();
     return element;
-  }
-
-  _sides() {
-    this._left.styles({
-      'flex-basis': '30%',
-      'min-width': '30%',
-    });
-
-    this._right.styles({
-      'flex-basis': '30%',
-      'min-width': '30%',
-    });
   }
 }
