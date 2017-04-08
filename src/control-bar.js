@@ -11,15 +11,14 @@ export default class ControlBar extends AbstractBar {
       .classed('main', true)
       .styles({
         'background': '#FAFAFA',
-        'box-sizing': 'content-box',
-        'height': '3em',
-        'overflow': 'hidden'
+        'height': '3em'
       });
 
     this._top = this._root
       .append('div')
       .classed('scola top', true)
       .styles({
+        'border-bottom': '1px solid #CCC',
         'display': 'flex',
         'flex-direction': 'row',
         'height': '3em'
@@ -65,8 +64,8 @@ export default class ControlBar extends AbstractBar {
       .classed('scola bottom', true)
       .styles({
         'background': '#CCC',
-        'border-bottom': '1px solid #CCC',
-        'display': 'flex',
+        'display': 'none',
+        'height': '3em',
         'justify-content': 'center',
         'padding': '0.5em 0'
       });
@@ -141,16 +140,30 @@ export default class ControlBar extends AbstractBar {
       return this._open;
     }
 
-    let height = parseFloat(this._root.style('height'));
+    const oldHeight = parseFloat(this._root.style('height'));
 
-    height = this._open === true ?
-      (height - 1) / 2 : (height * 2) + 1;
+    const newHeight = this._open === true ?
+      (oldHeight - 1) / 2 : (oldHeight * 2) + 1;
 
     this._open = value;
 
+    if (this._open === true) {
+      this._bottom.style('display', 'flex');
+    }
+
     return this._root
+      .style('height', oldHeight + 'px')
       .transition()
-      .style('height', height + 'px');
+      .style('height', newHeight + 'px')
+      .on('end', () => {
+        this._root.style('height', () => {
+          return this._open === true ? null : '3em';
+        });
+
+        if (this._open === false) {
+          this._bottom.style('display', 'none');
+        }
+      });
   }
 
   _insertTitle(title) {
