@@ -22,7 +22,6 @@ export default class InlineButton extends AbstractButton {
       .styles({
         'border-left': '1px solid',
         'border-left-color': 'inherit',
-        'order': 1,
         'width': 0
       });
 

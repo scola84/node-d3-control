@@ -17,7 +17,6 @@ export default class ControlButton extends AbstractButton {
       .append('div')
       .classed('scola padding', true)
       .styles({
-        'order': 1,
         'width': '0.75em'
       });
   }
