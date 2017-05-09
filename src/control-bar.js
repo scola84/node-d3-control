@@ -140,7 +140,7 @@ export default class ControlBar extends AbstractBar {
       return this._open;
     }
 
-    const oldHeight = parseFloat(this._root.style('height'));
+    const oldHeight = this._root.height();
 
     const newHeight = this._open === true ?
       oldHeight / 2 : oldHeight * 2;
