@@ -93,4 +93,13 @@ export default class AbstractIcon {
     this._icon.attr('tabindex', value);
     return this;
   }
+
+  title(value = null) {
+    if (value === null) {
+      return this._icon.attr('title');
+    }
+
+    this._icon.attr('title', value);
+    return this;
+  }
 }
