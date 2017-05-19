@@ -169,7 +169,7 @@ export default class ControlInput extends Observer {
       }
     }
 
-    const width = this._input.width();
+    const width = this._input.boundingRect('width');
     let value = this._input.property('value');
 
     value = value
@@ -197,7 +197,7 @@ export default class ControlInput extends Observer {
   }
 
   _height() {
-    const height = this._shadow.height();
+    const height = this._shadow.boundingRect('height');
     this._input.style('height', height + 'px');
   }
 
