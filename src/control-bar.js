@@ -30,7 +30,7 @@ export default class ControlBar extends AbstractBar {
       .styles({
         'align-items': 'flex-end',
         'display': 'flex',
-        'flex': 'auto',
+        'flex': '1 1 30%',
         'flex-direction': 'row',
         'padding': '0.5em 0'
       });
@@ -41,11 +41,11 @@ export default class ControlBar extends AbstractBar {
       .styles({
         'align-items': 'flex-end',
         'display': 'flex',
+        'flex': '1 1 40%',
         'flex-direction': 'row',
         'justify-content': 'center',
         'overflow': 'hidden',
-        'padding': '0.5em 0',
-        'max-width': '40%'
+        'padding': '0.5em 0'
       });
 
     this._right = this._top
@@ -54,7 +54,7 @@ export default class ControlBar extends AbstractBar {
       .styles({
         'align-items': 'flex-end',
         'display': 'flex',
-        'flex': 'auto',
+        'flex': '1 1 30%',
         'flex-direction': 'row-reverse',
         'padding': '0.5em 0'
       });
