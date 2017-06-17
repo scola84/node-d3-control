@@ -172,9 +172,8 @@ export default class ControlBar extends AbstractBar {
       .classed('scola title', true)
       .styles({
         'font-weight': 'bold',
-        'line-height': '2em',
+        'line-height': '1.75em',
         'overflow': 'hidden',
-        'text-align': 'center',
         'text-overflow': 'ellipsis',
         'white-space': 'nowrap'
       })

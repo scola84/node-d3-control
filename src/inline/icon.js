@@ -10,7 +10,7 @@ export default class Icon extends AbstractIcon {
       'flex-grow': 1
     });
 
-    this._icon.styles({
+    this._button.styles({
       'padding': '0 0.5em',
       'width': '100%',
     });

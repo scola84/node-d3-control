@@ -14,7 +14,7 @@ export default class ControlInput extends Observer {
       .classed('scola control input', true)
       .styles({
         'display': 'flex',
-        'flex': 'auto',
+        'flex': '1 1 0%',
         'flex-direction': 'column',
         'overflow': 'hidden',
         'padding': '0 0.5em',

@@ -11,7 +11,7 @@ export default class Text {
         'overflow': 'hidden',
       });
 
-    this._text = this._root
+    this._button = this._root
       .append('button')
       .attrs({
         'tabindex': -1,
@@ -24,6 +24,14 @@ export default class Text {
         'cursor': 'inherit',
         'margin': 0,
         'padding': 0
+      });
+
+    this._text = this._button
+      .append('span')
+      .styles({
+        'display': 'flex',
+        'font-size': 'inherit',
+        'position': 'relative'
       });
   }
 
@@ -57,10 +65,10 @@ export default class Text {
 
   tabindex(value = null) {
     if (value === null) {
-      return this._text.attr('tabindex');
+      return this._button.attr('tabindex');
     }
 
-    this._text.attr('tabindex', value);
+    this._button.attr('tabindex', value);
     return this;
   }
 
@@ -75,10 +83,10 @@ export default class Text {
 
   type(value = null) {
     if (value === null) {
-      return this._text.attr('type');
+      return this._button.attr('type');
     }
 
-    this._text.attr('type', value);
+    this._button.attr('type', value);
     return this;
   }
 }

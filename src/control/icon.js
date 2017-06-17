@@ -10,7 +10,7 @@ export default class Icon extends AbstractIcon {
       'padding': '0 0.125em'
     });
 
-    this._icon.styles({
+    this._button.styles({
       'padding-left': 'inherit',
       'padding-right': 'inherit',
     });
@@ -21,7 +21,7 @@ export default class Icon extends AbstractIcon {
       'color': '#FFF'
     });
 
-    this._icon.styles({
+    this._button.styles({
       background,
       'border-radius': '1em',
       'height': '1em',

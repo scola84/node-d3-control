@@ -10,7 +10,7 @@ export default class Text extends AbstractText {
       'flex-grow': 1
     });
 
-    this._text.styles({
+    this._button.styles({
       'font-size': '0.9em',
       'line-height': '2em',
       'padding': '0 0.5em',

@@ -11,7 +11,7 @@ export default class Text extends AbstractText {
       'padding': '0 0.125em'
     });
 
-    this._text.styles({
+    this._button.styles({
       'line-height': '2em',
       'overflow': 'hidden',
       'padding-left': 'inherit',

@@ -13,7 +13,6 @@ export default class InlineBar extends AbstractBar {
         'display': 'flex',
         'color': '#007AFF',
         'height': '2em',
-        'margin': '0.5em 0',
         'overflow': 'hidden'
       });
   }

@@ -12,7 +12,7 @@ export default class AbstractIcon {
         'cursor': 'inherit',
       });
 
-    this._icon = this._root
+    this._button = this._root
       .append('button')
       .attrs({
         'tabindex': -1,
@@ -27,6 +27,14 @@ export default class AbstractIcon {
         'margin': 0,
         'padding': 0
       });
+
+    this._icon = this._button
+      .append('span')
+      .styles({
+        'display': 'flex',
+        'font-size': 'inherit',
+        'position': 'relative'
+      });
   }
 
   destroy() {
@@ -40,7 +48,7 @@ export default class AbstractIcon {
   }
 
   icon() {
-    return this._icon;
+    return this._button;
   }
 
   class(value = null) {
@@ -78,28 +86,28 @@ export default class AbstractIcon {
 
   size(value = null) {
     if (value === null) {
-      return this._icon.style('font-size');
+      return this._button.style('font-size');
     }
 
-    this._icon.style('font-size', value);
+    this._button.style('font-size', value);
     return this;
   }
 
   tabindex(value = null) {
     if (value === null) {
-      return this._icon.attr('tabindex');
+      return this._button.attr('tabindex');
     }
 
-    this._icon.attr('tabindex', value);
+    this._button.attr('tabindex', value);
     return this;
   }
 
   title(value = null) {
     if (value === null) {
-      return this._icon.attr('title');
+      return this._button.attr('title');
     }
 
-    this._icon.attr('title', value);
+    this._button.attr('title', value);
     return this;
   }
 }

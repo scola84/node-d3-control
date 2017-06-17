@@ -10,7 +10,7 @@ export default class Icon extends AbstractIcon {
       'justify-content': 'center'
     });
 
-    this._icon.styles({
+    this._button.styles({
       'padding-left': 'inherit',
       'padding-right': 'inherit'
     });
