@@ -32,6 +32,15 @@ export default class AbstractBar {
     return this._root;
   }
 
+  width(value = null) {
+    if (value === null) {
+      return this._root.style('width');
+    }
+
+    this._root.style('width', value);
+    return this;
+  }
+
   append(button, action = true) {
     if (action === false) {
       return this._deleteButton(button);
