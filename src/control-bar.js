@@ -197,26 +197,31 @@ export default class ControlBar extends AbstractBar {
   }
 
   _insertBottom(element) {
+    this._buttons.add(element);
     this._bottom.append(() => element.root().node());
     return element;
   }
 
   _insertCenter(element) {
+    this._buttons.add(element);
     this._center.append(() => element.root().node());
     return element.center();
   }
 
   _insertLeft(element) {
+    this._buttons.add(element);
     this._left.append(() => element.root().node());
     return element.left();
   }
 
   _insertRight(element) {
+    this._buttons.add(element);
     this._right.append(() => element.root().node());
     return element.right();
   }
 
   _deleteElement(element) {
+    this._buttons.delete(element);
     element.root().remove();
     return element;
   }
