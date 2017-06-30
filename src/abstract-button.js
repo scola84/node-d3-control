@@ -22,12 +22,13 @@ export default class AbstractButton extends Observer {
   }
 
   destroy() {
-    super.destroy();
     this._unbindRoot();
 
     this._root.dispatch('destroy');
     this._root.remove();
     this._root = null;
+
+    super.destroy();
   }
 
   root() {
