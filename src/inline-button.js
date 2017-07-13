@@ -44,18 +44,22 @@ export default class InlineButton extends AbstractButton {
   icon(value = null) {
     const icon = new Icon();
 
-    icon.class(value);
-    this._add(icon);
+    icon
+      .icon()
+      .classed(value, true);
 
+    this._add(icon);
     return icon;
   }
 
   text(value = null) {
     const text = new Text();
 
-    text.text(value);
-    this._add(text);
+    text
+      .text()
+      .text(value);
 
+    this._add(text);
     return text;
   }
 

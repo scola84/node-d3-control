@@ -45,31 +45,8 @@ export default class Text {
     return this._root;
   }
 
-  color(value = null) {
-    if (value === null) {
-      return this._root.style('color');
-    }
-
-    this._root.style('color', value);
-    return this;
-  }
-
-  order(value = null) {
-    if (value === null) {
-      return this._root.style('order');
-    }
-
-    this._root.style('order', value);
-    return this;
-  }
-
-  tabindex(value = null) {
-    if (value === null) {
-      return this._button.attr('tabindex');
-    }
-
-    this._button.attr('tabindex', value);
-    return this;
+  button() {
+    return this._button;
   }
 
   text(value = null) {
@@ -78,15 +55,6 @@ export default class Text {
     }
 
     this._text.text(value);
-    return this;
-  }
-
-  type(value = null) {
-    if (value === null) {
-      return this._button.attr('type');
-    }
-
-    this._button.attr('type', value);
     return this;
   }
 }

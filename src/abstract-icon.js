@@ -47,67 +47,11 @@ export default class AbstractIcon {
     return this._root;
   }
 
-  icon() {
+  button() {
     return this._button;
   }
 
-  class(value = null) {
-    if (value === null) {
-      return this._icon.classed();
-    }
-
-    if (this._class) {
-      this._icon.classed(this._class, false);
-    }
-
-    this._class = value;
-    this._icon.classed(value, true);
-
-    return this;
-  }
-
-  color(value = null) {
-    if (value === null) {
-      return this._root.style('color');
-    }
-
-    this._root.style('color', value);
-    return this;
-  }
-
-  order(value = null) {
-    if (value === null) {
-      return this._root.style('order');
-    }
-
-    this._root.style('order', value);
-    return this;
-  }
-
-  size(value = null) {
-    if (value === null) {
-      return this._button.style('font-size');
-    }
-
-    this._button.style('font-size', value);
-    return this;
-  }
-
-  tabindex(value = null) {
-    if (value === null) {
-      return this._button.attr('tabindex');
-    }
-
-    this._button.attr('tabindex', value);
-    return this;
-  }
-
-  title(value = null) {
-    if (value === null) {
-      return this._button.attr('title');
-    }
-
-    this._button.attr('title', value);
-    return this;
+  icon() {
+    return this._icon;
   }
 }

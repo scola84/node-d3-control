@@ -91,33 +91,6 @@ export default class ControlInput extends Observer {
     return this;
   }
 
-  placeholder(value = null) {
-    if (value === null) {
-      return this._input.attr('placeholder');
-    }
-
-    this._input.attr('placeholder', value);
-    return this;
-  }
-
-  tabindex(value = null) {
-    if (value === null) {
-      return this._input.attr('tabindex');
-    }
-
-    this._input.attr('tabindex', value);
-    return this;
-  }
-
-  type(value = null) {
-    if (value === null) {
-      return this._input.attr('type');
-    }
-
-    this._input.attr('type', value);
-    return this;
-  }
-
   bottom() {}
 
   left() {}

@@ -75,8 +75,12 @@ export default class AbstractButton extends Observer {
 
   _order() {
     this._elements.forEach((element) => {
-      element.order(this._root.node().children.length + 1);
-      this._root.append(() => element.root().node());
+      element.root().attr('order',
+        this._root.node().children.length + 1);
+
+      this._root.append(() => {
+        return element.root().node();
+      });
     });
   }
 
