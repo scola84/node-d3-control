@@ -40,6 +40,14 @@ export default class AbstractBar {
     return this._insertButton(button);
   }
 
+  disabled(value) {
+    this._buttons.forEach((button) => {
+      button.disabled(value);
+    });
+
+    return this;
+  }
+
   _bindRoot() {
     this._gesture = this._root
       .gesture()
